@@ -117,6 +117,7 @@ public class UserController {
     }
     @RequestMapping("modifyPwd2")
     @ResponseBody
+    //啊啊啊啊啊实打实阿斯顿阿斯顿阿斯顿
     public ResponseCode modifyPwd2(UserDto userDto,HttpSession session){
         ResponseCode code = new ResponseCode();
         User user = (User) session.getAttribute("loginUser");
