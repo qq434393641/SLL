@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiudaozhang.mapper.DataDictionaryDao">
+
+
+  <resultMap id="base" type="com.qiudaozhang.model.DataDictionary">
+    <id property="id" column="id"/>
+    <result property="valueId" column="value_id"/>
+    <result property="valueName" column="value_name"/>
+  </resultMap>
+
+
+  <select id="findByTypeCode" resultType="com.qiudaozhang.model.DataDictionary">
+    select id,  value_Id, value_Name
+    from data_dictionary
+    where type_Code = #{cardType}
+  </select>
+    <select id="selectCardName" resultType="com.qiudaozhang.model.DataDictionary">
+      select id,  value_Id, value_Name
+    from data_dictionary
+    where type_Code = #{typeCode}
+    and value_Id = #{valueId}
+    </select>
+</mapper>

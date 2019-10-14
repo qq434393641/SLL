@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiudaozhang.mapper.RoleDao">
+    <insert id="save">
+        insert into au_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleCode != null">
+                role_code,
+            </if>
+            <if test="roleName != null">
+                role_Name,
+            </if>
+            <if test="createDate != null">
+                create_Date,
+            </if>
+            <if test="isStart != null">
+                is_Start,
+            </if>
+            <if test="createdBy != null">
+                created_By,
+            </if>
+        </trim>
+        <trim prefix="value(" suffix=")" suffixOverrides=",">
+            <if test="roleCode != null">
+                #{roleCode},
+            </if>
+            <if test="roleName != null">
+                #{roleName},
+            </if>
+            <if test="createDate != null">
+                #{createDate},
+            </if>
+            <if test="isStart != null">
+                #{isStart},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy},
+            </if>
+        </trim>
+    </insert>
+    <delete id="delGroup">
+        delete
+        from au_role
+        where id in
+        <foreach collection="list" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+
+    </delete>
+
+    <select id="findAll" resultType="com.qiudaozhang.model.Role">
+      select id, role_Code, role_Name, create_Date, is_Start, created_By
+      from au_role
+    </select>
+  <select id="findById" resultType="java.lang.String">
+    select role_Name
+    from au_role
+    where id=#{roleId}
+  </select>
+
+</mapper>
